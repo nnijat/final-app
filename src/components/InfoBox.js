@@ -1,26 +1,24 @@
 import React from "react";
 
-function DisplayInfo(props) {
+function InfoBox(props) {
     let expenseAmts = 0
-    if(props.user.expenses){
-        expenseAmts = props.user.expenses.reduce((acc, curr)=>{ 
-            console.log(curr.expAmt)
+    if (props.user.expenses) {
+        expenseAmts = props.user.expenses.reduce((acc, curr) => {
             return acc += curr.expAmt
-        },0)
+        }, 0)
     }
 
-    function calculateBal(){
+    function calculateBal() {
         let bal = props.user.budget - expenseAmts
         return bal
     }
-    
 
     return (
         <div className="row my-3">
-            <div className="col-4 text-center mb-2">
+            <div className="col-4 text-center mb-2 ">
                 <h6 className="text-uppercase info-title">budget</h6>
                 <span className="budget-icon"><i className="fas fa-money-bill-alt"></i></span>
-                <h4 class="text-uppercase mt-2 budget" id="budget"><span>$ </span><span
+                <h4 className="text-uppercase mt-2 budget" id="budget"><span>$ </span><span
                     id="budget-amount">{props.user.budget}</span></h4>
             </div>
             <div className="col-4 text-center">
@@ -29,7 +27,7 @@ function DisplayInfo(props) {
                 <h4 className="text-uppercase mt-2 expense" id="expense"><span>$ </span><span
                     id="expense-amount">{expenseAmts}</span></h4>
             </div>
-            <div class="col-4 text-center">
+            <div className="col-4 text-center">
                 <h6 className="text-uppercase info-title">balance</h6>
                 <span className="balance-icon"><i className="fas fa-dollar-sign"></i></span>
                 <h4 className="text-uppercase mt-2 balance" id="balance"> <span>$ </span><span
@@ -38,4 +36,4 @@ function DisplayInfo(props) {
         </div>
     )
 }
-export default DisplayInfo;
+export default InfoBox;

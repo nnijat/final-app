@@ -6,13 +6,22 @@
   --mainBlue: #05668d;
 }
 
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: -webkit-center;
+}
+
 body {
   background: var(--mainWhite);
   color: var(--mainDark);
   text-align: center;
 }
-.budget-feedback,
-.expense-feedback {
+
+.budget-feedback, .expense-feedback {
   display: none;
 }
 
@@ -21,25 +30,30 @@ body {
   padding: 1rem;
   border-radius: 0.25rem;
 }
+
 .expense-form {
   border: 0.15rem solid var(--mainRed);
   padding: 1rem;
   border-radius: 0.25rem;
 }
+
 .budget-submit {
   background: transparent;
   border: 0.1rem solid var(--mainGreen);
   color: var(--mainGreen);
 }
+
 .expense-submit {
   background: transparent;
   border: 0.1rem solid var(--mainRed);
   color: var(--mainRed);
 }
+
 .expense-submit:hover {
   background: var(--mainRed);
   color: var(--mainWhite);
 }
+
 .budget-submit:hover {
   background: var(--mainGreen);
   color: var(--mainDark);
@@ -48,63 +62,76 @@ body {
 .budget-input {
   border: 0.05rem solid var(--mainGreen) !important;
 }
+
 .expense-input {
   border: 0.05rem solid var(--mainRed) !important;
 }
-.expense-amount,
-.expense-title {
+
+.expense-amount, .expense-title {
   color: var(--mainRed);
 }
+
 .edit-icon {
   color: var(--mainBlue);
   cursor: pointer;
   font-size: 1rem;
   text-decoration: none !important;
 }
+
 .delete-icon {
   color: var(--mainRed);
   cursor: pointer;
   font-size: 1rem;
   text-decoration: none !important;
 }
+
 .edit-icon:hover {
   color: var(--mainBlue);
 }
+
 .delete-icon:hover {
   color: var(--mainRed);
 }
+
 .showItem {
   display: block;
 }
+
 .info-title {
   font-size: 1.5rem;
 }
+
 .budget {
   font-size: 1.6rem;
   color: var(--mainGreen);
 }
+
 .expense {
   font-size: 1.6rem;
   color: var(--mainRed);
 }
+
 .balance {
   font-size: 1.6rem;
 }
-.budget-icon,
-.expense-icon,
-.balance-icon {
+
+.budget-icon, .expense-icon, .balance-icon {
   font-size: 2.5rem;
   color: var(--mainBlue);
 }
+
 .showRed {
   color: var(--mainRed);
 }
+
 .showGreen {
   color: var(--mainGreen);
 }
+
 .showBlack {
   color: var(--mainDark);
 }
+
 @media screen and (min-width: 992px) {
   .budget {
     font-size: 2.6rem;
@@ -117,17 +144,37 @@ body {
   .balance {
     font-size: 2.6rem;
   }
-  .budget-icon,
-  .expense-icon,
-  .balance-icon {
+  .budget-icon, .expense-icon, .balance-icon {
     font-size: 3.5rem;
     color: var(--mainBlue);
   }
 }
+
 .list-item {
   flex: 0 0 33.33%;
   text-align: center;
 }
+
 .expense-item {
   height: 2rem;
+}
+
+.card-link {
+  background-color: #57a850;
+  border: none;
+  color: rgb(14, 1, 1);
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 1.5rem;
+  margin: 4px 2px;
+}
+
+.form-group {
+  text-align: center
+}
+
+.budget-label {
+  margin-right: 20px;
 }
