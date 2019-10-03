@@ -24,19 +24,42 @@ class BudgetForm extends Component {
         
 
         return (
-            <div className="col-md-5 my-3">
-                <div className="budget-feedback alert alert-danger text-capitalize">budget feedback</div>
-                <form id="budget-form" class=" budget-form" onSubmit={this.handleSubmit}>
-                    <h5 className="text-capitalize">please enter your budget</h5>
-                    <div className="form-group">
-                        <input type="number" className="form-control budget-input" id="budget-input" onChange={(e)=>{
-                            console.log(Number(e.target.value))
-                            this.setState({user: {...this.state.user, budget: Number(e.target.value)}})
-                        }}/>
+            <div className="card" id="card" style={{width: "18rem"}}>
+                <div className="card-body">
+                    <h5 className="card-title">hello</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">howdy</h6>
+                    <p className="card-text">SCHEDULE</p>
+                    <a href="#" className="card-link" data-toggle = "modal" data-target="#editModal">edit</a>
+                    <button type="button" className="btn btn-secondary" data-container="#card" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                    Schedule
+                    </button>
+                    <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="editModalTitle">EDIT</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                YO
+                                <div className = "form-group">
+                                <label htmlFor="teamName">Please Enter Your Budget</label>
+                                <input type ="Number" id="budget-input" onChange={(e)=>{
+                                    console.log(Number(e.target.value))
+                                    this.setState({user: {...this.state.user, budget: Number(e.target.value)}})
+                                }}/>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" data-dismiss="modal" onClick = {this.handleSubmit}>Save changes</button>
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" className="btn text-capitalize budget-submit"
-                        id="budget-submit">calculate</button>
-                </form>
+                </div>
             </div>
         )
     }
