@@ -9,6 +9,7 @@
 body {
   background: var(--mainWhite);
   color: var(--mainDark);
+  text-align: center;
 }
 .budget-feedback,
 .expense-feedback {
