@@ -1,3 +1,5 @@
+import React from "react";
+
 function ExpenseList() {
     return (
         <div class="col-md-7 my-3">
@@ -11,3 +13,5 @@ function ExpenseList() {
         </div>
     )
 }
+
+export default ExpenseList;
