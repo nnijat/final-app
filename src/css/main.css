@@ -159,8 +159,19 @@ body {
   height: 2rem;
 }
 
-.card-link {
+.budget-card-link {
   background-color: #57a850;
+  border: none;
+  color: rgb(14, 1, 1);
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 1.5rem;
+  margin: 4px 2px;
+}
+.expense-card-link {
+  background-color: #ee3131;
   border: none;
   color: rgb(14, 1, 1);
   padding: 20px 34px;

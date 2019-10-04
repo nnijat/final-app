@@ -24,7 +24,7 @@ class BudgetForm extends Component {
         return (
             <div className="card" id="card" style={{ width: "18rem" }}>
                 <div className="card-body">
-                    <a href="#" className="card-link" data-toggle="modal" data-target="#editModal">Add Budget</a>
+                    <a href="#" className="budget-card-link" data-toggle="modal" data-target="#editModal">Add Budget</a>
                     <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">

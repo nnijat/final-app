@@ -7,7 +7,7 @@ function ExpenseList() {
                 <div className="expense-list__info d-flex justify-content-between text-capitalize">
                     <h5 className="list-item">expense title</h5>
                     <h5 className="list-item">expense value</h5>
-                    <h5 className="list-item"></h5>
+                    <h5 className="list-item">edit</h5>
                 </div>
             </div>
         </div>
