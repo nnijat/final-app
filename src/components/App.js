@@ -16,12 +16,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch('users')
+        fetch('/users')
             .then(res => res.json())
             .then(data => this.setState({ user: data[0] }))
     }
 
     render() {
+      if(this.state.user.name){
         return (
             <div className="App">
                 <header className="App-header">
@@ -47,11 +48,17 @@ class App extends Component {
                             </div>
                         </div>
                         {/*ExpenseList*/}
-                        <ExpenseListForm />
+                        <ExpenseListForm 
+                          expenses={this.state.user.expenses}
+                        />
                     </div>
                 </header>
             </div>
         )
+      }
+      else{
+        return "loading..."
+      }
     }
 }
 

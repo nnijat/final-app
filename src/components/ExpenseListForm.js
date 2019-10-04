@@ -12,8 +12,9 @@ function ExpenseListForm() {
                     <h5 className="list-item">edit</h5>
                 </div>
             </div>
-            <ExpenseList />
-            <ExpenseList />
+            <ExpenseList 
+              expenses = {props.expenses}
+            />
         </div>
     )
 }
