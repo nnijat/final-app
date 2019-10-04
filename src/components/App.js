@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import '../css/main.css';
 import '../css/bootstrap.min.css'
 import BudgetForm from './BudgetForm';
+import CurrencyForm from './CurrencyForm'
 import ExpenseForm from './ExpenseForm';
-import ExpenseList from './ExpenseList';
+import ExpenseListForm from './ExpenseListForm';
 import InfoBox from './InfoBox';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -26,7 +28,7 @@ class App extends Component {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-11 mx-auto pt-3">
-                                <h3 className="text-uppercase mb-4">budget app</h3>
+                                <h1 className="text-uppercase mb-4">budget app</h1>
                                 {/*BudgetForm*/}
                                 <BudgetForm />
 
@@ -41,9 +43,11 @@ class App extends Component {
                                 />
 
                                 {/*ExpenseList*/}
-                                <ExpenseList />
+                                <CurrencyForm />
                             </div>
                         </div>
+                        {/*ExpenseList*/}
+                        <ExpenseListForm />
                     </div>
                 </header>
             </div>
