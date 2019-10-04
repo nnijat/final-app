@@ -22,43 +22,44 @@ class App extends Component {
     }
 
     render() {
-      if(this.state.user.name){
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-11 mx-auto pt-3">
-                                <h1 className="text-uppercase mb-4">budget app</h1>
-                                {/*BudgetForm*/}
-                                <BudgetForm />
+        if (this.state.user.name) {
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-11 mx-auto pt-3">
+                                    <h1 className="text-uppercase mb-4">budget app</h1>
 
-                                {/*Display*/}
-                                <InfoBox
-                                    user={this.state.user}
-                                />
+                                    {/*BudgetForm*/}
+                                    <BudgetForm />
 
-                                {/*ExpenseForm*/}
-                                <ExpenseForm
-                                    user={this.state.user}
-                                />
+                                    {/*ExpenseForm*/}
+                                    <ExpenseForm
+                                        user={this.state.user}
+                                    />
 
-                                {/*ExpenseList*/}
-                                <CurrencyForm />
+                                    {/*Display*/}
+                                    <InfoBox
+                                        user={this.state.user}
+                                    />
+
+                                    {/*ExpenseList*/}
+                                    <CurrencyForm />
+                                </div>
                             </div>
+                            {/*ExpenseList*/}
+                            <ExpenseListForm
+                                expenses={this.state.user.expenses}
+                            />
                         </div>
-                        {/*ExpenseList*/}
-                        <ExpenseListForm 
-                          expenses={this.state.user.expenses}
-                        />
-                    </div>
-                </header>
-            </div>
-        )
-      }
-      else{
-        return "loading..."
-      }
+                    </header>
+                </div>
+            )
+        }
+        else {
+            return "loading..."
+        }
     }
 }
 

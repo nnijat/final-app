@@ -1,7 +1,7 @@
 import React from "react";
 import ExpenseList from './ExpenseList';
 
-function ExpenseListForm() {
+function ExpenseListForm(props) {
     return (
         <div className="col-md-7 my-3">
             <div className="expense-list" id="expense-list">
@@ -12,9 +12,12 @@ function ExpenseListForm() {
                     <h5 className="list-item">edit</h5>
                 </div>
             </div>
-            <ExpenseList 
-              expenses = {props.expenses}
-            />
+            {props.expenses.map(exp =>
+                <ExpenseList 
+                    desc = {exp.expDesc}
+                    amt = {exp.expAmt}
+                />
+            )}
         </div>
     )
 }
