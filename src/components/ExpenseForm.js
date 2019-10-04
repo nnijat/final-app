@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class ExpenseForm extends Component {
+    state = {
+        newExpenseDesc:"",
+        newExpenseAmt:0,
+        dollarAmt:0,
+        exchangeRate:1
+    }
 
     componentDidMount() {
         fetch('/users')
@@ -11,6 +17,7 @@ class ExpenseForm extends Component {
     handleSubmit = (e) => {
         let expAmtStr = this.state.newExpenseAmt
         let expAmtNum = Number(expAmtStr)
+        expAmtNum = expAmtNum.toFixed(2);
         let newExpObj = {
             expDesc: this.state.newExpenseDesc,
             expAmt: expAmtNum
@@ -24,6 +31,12 @@ class ExpenseForm extends Component {
         })
         this.setState({ newExpenseDesc: "" })
         this.setState({ newExpenseAmt: 0 })
+        this.setState({dollarAmt: 0})
+        this.setState({exchangeRate: 1})
+    }
+
+    onChangeAmtOrCurr= (e) =>{
+        
     }
 
     render() {
@@ -38,17 +51,52 @@ class ExpenseForm extends Component {
                             <div className="modal-content">
                                 <div className="modal-body">
                                     <div className="form-group">
-                                        <label htmlFor="teamName" className="budget-label">please enter your expense :  </label>
+                                        <label className="budget-label">please enter your expense :  </label>
                                         <input type="text" id="expense-input" onChange={(e) => {
                                             this.setState({ newExpenseDesc: e.target.value })
                                         }} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="teamName" className="budget-label">please enter your expense amount :  </label>
+                                        <label className="budget-label">please enter your expense amount :  </label>
                                         <input type="number" id="amount-input" onChange={(e) => {
-                                            this.setState({ newExpenseAmt: e.target.value })
+                                            this.setState({dollarAmt: e.target.value})
+                                            let exchAmt = e.target.value / this.state.exchangeRate
+                                            exchAmt = exchAmt.toFixed(2)
+                                            this.setState({newExpenseAmt: exchAmt})
                                         }} />
                                     </div>
+                                    <div className="form-group d-inline">
+                                        <label htmlFor="teamName" className="budget-label d-inline" >change currency:  </label>
+                                        <select className="form-control d-inline" id = "currencyDropDwn" defaultValue="USD" onChange = {(e)=>{
+                                            let evt = document.getElementById("currencyDropDwn")
+                                            let abbr = evt.options[evt.selectedIndex].value
+                                            fetch('https://api.exchangeratesapi.io/latest?base=USD')
+                                            .then(res => res.json())
+                                            .then(data => {
+                                                let exchRate = data.rates[`${abbr}`]
+                                                this.setState({exchangeRate: exchRate})
+                                                let dollarAmt = this.state.dollarAmt
+                                                let exchAmt = dollarAmt / exchRate
+                                                exchAmt = exchAmt.toFixed(2);
+                                                this.setState({newExpenseAmt: exchAmt})
+                                            })
+                                            
+                                        }}>
+                                            <option></option>
+                                            <option value="USD">US dollar</option>
+                                            <option value="AUD">Australian dollar</option>
+                                            <option value="BRL">Brazilian real</option>
+                                            <option value="CAD">Canadian dollar</option>
+                                            <option value="CNY">Chinese yuan</option>
+                                            <option value="ISK">Icelandic Krona</option>
+                                            <option value="INR">Indian rupee</option>
+                                            <option value="MXN">Mexican peso</option>
+                                            <option value="GBP">Pound sterling</option>
+                                            <option value="CHF">Swiss franc</option>                        
+                                            <option value="TRY">Turkish Lira</option>
+                                        </select>
+                                    </div>
+                                    dollars: {this.state.newExpenseAmt}
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
