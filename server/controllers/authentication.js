@@ -1,27 +1,28 @@
 let User = require("../models/userModel")
-const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
-// const jwt = require("jwt-simple")
+const jwt = require("jwt-simple")
 
 
 function authentication(req, res, next){
-  const token = req.header("token");
-  try{
-    var tokenObj = jwt.verify(token, "dsgsdfg");
-    next();
+  if(request.path.split("/")[1] !== "api")
+  {
+    return next();
   }
-  catch{
-    res.send("unauthorized");
+
+  const tokenStr = req.header("authorization");
+  if (!tokenStr) {
+    return res.send("Invalid credentials");
   }
-  return;
-  // User.findOne({username:username}, (err, user)=>{
-  //   if(user && bcrypt.compareSync(password, user.password)){
-  //     next();
-  //   }
-  //   else{
-  //     res.send("unauthorized")
-  //   }
-  // })
+
+  const tokenObject = jwt.decode(tokenString, process.env.SECRET);
+
+  User.findById(tokenObj.userId, function(err, user){
+    if(err){return res.send("Error")}
+    if(user){
+      req.user = user;
+      return next();
+    }
+    return res.send("invalid credentials")
+  })
 }
 
 exports.authentication = authentication;

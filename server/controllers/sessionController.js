@@ -1,20 +1,38 @@
 const User = require("../models/userModel")
-const bcrypt = require("bcryptjs");
-var jwt = require("jsonwebtoken");
+const tokenForUser = require("../services/token").tokenForUser;
+const compare = require("../services/hash").compare;
+
 
 function create(req, res){
   const{username, password} = req.body;
-  User.findOne({username:username}, (err, user)=>{
-    if(user && bcrypt.compareSync(password, user.password)){
-      const timestamp = new Date().getTime();
-      const userObj = {userId:user.id, iat: timestamp}
-      var token = jwt.sign(userObj, "dsgsdfg")
-      res.json({token: token})
+
+  User.findOne({ username }).exec()
+    .then(user =>{
+    if(!user){
+      return res.send("no user found")
     }
-    else{
-      res.send("Unauthorized")
-    }
+    compare(password, user.password, (err, isMatch)=>{
+      if(err){
+        return res.send("Error")
+      }
+      if(!isMatch){
+        return res.send("invalid password")
+      }
+      const token = tokenForUser(user);
+      res.json({token});
+    });
+    // if(user && bcrypt.compareSync(password, user.password)){
+    //   const timestamp = new Date().getTime();
+    //   const userObj = {userId:user.id, iat: timestamp}
+    //   var token = jwt.sign(userObj, "dsgsdfg")
+    //   res.json({token: token})
+    // }
+    // else{
+    //   res.send("Unauthorized")
+    // }
+  }).catch(() =>{
+    return res.send("Error")
   })
 }
 
-module.exports = create
+exports.create = create
