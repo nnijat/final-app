@@ -1,13 +1,19 @@
 const express = require('express')
 const app = express()
-app.use(express.static("public"));
-let userRoute = require("./server/routes/userRoute")
 
+let userRoute = require("./server/routes/userRoute")
 const bodyParser = require("body-parser");
-app.use(bodyParser.json());
-require("dotenv").config();
-app.use("/users", userRoute)
 let mongoose = require("mongoose");
+require("dotenv").config();
+const authMiddleware = require("./server/services/authentication")
+const sessionRoutes = require("./server/routes/sessionRoutes")
+
+app.use(express.static("public"));
+app.use(bodyParser.json());
+app.use(sessionRoutes)
+app.use(authMiddleware)
+app.use("/users", userRoute)
+
 mongoose.connect(process.env.mongodburi, {useNewUrlParser: true});
 
 
