@@ -2,12 +2,18 @@ import React from "react";
 
 function ExpenseList() {
     return (
-        <div className="col-md-7 my-3">
-            <div className="expense-list" id="expense-list">
-                <div className="expense-list__info d-flex justify-content-between text-capitalize">
-                    <h5 className="list-item">expense title</h5>
-                    <h5 className="list-item">expense value</h5>
-                    <h5 className="list-item">edit</h5>
+        <div class="expense">
+            <div class="expense-item d-flex justify-content-between align-items-baseline">
+                <h6 class="expense-title mb-0 text-uppercase list-item">best buy</h6>
+                <h5 class="expense-amount mb-0 list-item">$ 300</h5>
+                <h5 class="expense-amount mb-0 list-item">09/30/2019</h5>
+                <div class="expense-icons list-item">
+                    <a href="#" class="edit-icon mx-2" data-id="1">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="delete-icon" data-id="1">
+                        <i class="fas fa-trash"></i>
+                    </a>
                 </div>
             </div>
         </div>

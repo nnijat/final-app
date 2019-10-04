@@ -151,7 +151,7 @@ body {
 }
 
 .list-item {
-  flex: 0 0 33.33%;
+  flex: 0 0 25%;
   text-align: center;
 }
 
@@ -171,7 +171,7 @@ body {
   margin: 4px 2px;
 }
 .expense-card-link {
-  background-color: #ee3131;
+  background-color: #c02525;
   border: none;
   color: rgb(14, 1, 1);
   padding: 20px 34px;
