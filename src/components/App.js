@@ -16,13 +16,15 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch('https://budget-app-sn.herokuapp.com/users')
+        fetch('/users')
             .then(res => res.json())
             .then(data => this.setState({ user: data[0] }))
     }
 
     render() {
+        console.log("I am here")
         if (this.state.user.name) {
+            console.log("I am here too")
             return (
                 <div className="App">
                     <header className="App-header">
@@ -55,6 +57,7 @@ class App extends Component {
             )
         }
         else {
+            console.log("it is me again, I am here")
             return "loading..."
         }
     }
