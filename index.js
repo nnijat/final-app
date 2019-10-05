@@ -13,7 +13,7 @@ app.use('/users', userRoute);
 mongoose.connect(process.env.mongodburi, {useNewUrlParser: true});
 
 
-const thePort = 3001
+const thePort = process.env.PORT || 3001;
 app.listen(thePort, (err) => {
  if (err) {
    return console.log("Error", err);
