@@ -22,9 +22,7 @@ class App extends Component {
     }
 
     render() {
-        console.log("I am here")
         if (this.state.user.name) {
-            console.log("I am here too")
             return (
                 <div className="App">
                     <header className="App-header">
@@ -57,7 +55,6 @@ class App extends Component {
             )
         }
         else {
-            console.log("it is me again, I am here")
             return "loading..."
         }
     }
